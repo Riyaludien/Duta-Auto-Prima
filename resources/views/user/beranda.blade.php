@@ -113,14 +113,13 @@
             <div class="horizontal-scroll-container" id="katalogProduk">
 
                 {{-- ROW HARUS LANGSUNG DI SINI --}}
-                <div class="row g-4 flex-nowrap">
+                <div class="row g-3 flex-nowrap">
                     @foreach ($barangs as $barang)
-                                <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                                     <div class="custom-card h-100 d-flex flex-column">
                                         <img src="{{ $barang->gambar
                         ? asset('storage/' . $barang->gambar)
-                        : asset('images/katalog/default.jpg') }}" class="card-img-top"
-                                            alt="{{ $barang->nama_barang }}">
+                        : asset('images/katalog/default.jpg') }}" class="card-img-top" alt="{{ $barang->nama_barang }}">
 
                                         <div class="card-body-custom flex-grow-1">
                                             <span class="product-category">
@@ -131,29 +130,24 @@
                                                 {{ $barang->nama_barang }}
                                             </h5>
 
-                                            <div class="mb-2">
-                                                <i class="bi bi-star-fill text-warning small"></i>
-                                                <span class="small text-muted ms-1">(15)</span>
-                                            </div>
-
                                             <div class="product-price">
                                                 Rp {{ number_format($barang->harga, 0, ',', '.') }}
                                             </div>
                                         </div>
 
-                                        <div class="p-3 pt-0 mt-auto">
+                                        <div class="p-2 pt-0 mt-auto">
                                             <form action="{{ route('cart.add', $barang->id) }}" method="POST">
                                                 @csrf
-                                                <button type="submit" class="btn btn-outline-custom rounded-pill w-100">Tambah ke
-                                                    Keranjang</button>
+                                                <button type="submit" class="btn btn-outline-custom rounded-pill w-100 btn-sm">
+                                                    Tambah
+                                                </button>
                                             </form>
-
                                         </div>
-
                                     </div>
                                 </div>
                     @endforeach
                 </div>
+
 
             </div>
 

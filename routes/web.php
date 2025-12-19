@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\KatalogController;
 
 
 /*
@@ -130,6 +131,9 @@ Route::get('/kirim-test', function () {
 
 Route::post('/riwayat/review', [RiwayatController::class, 'storeReview'])->name('riwayat.review.store');
 
+// Rute Katalog
+Route::get('/katalog', [KatalogController::class, 'index'])
+    ->name('katalog.index');
 
 // ====================================================
 // 2. LOGIKA REDIRECT SETELAH LOGIN
