@@ -17,7 +17,7 @@ use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\KatalogController;
-
+use App\Http\Controllers\Admin\OrderBarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +77,8 @@ Route::get('/mitra', function () {
 Route::get('/katalog', function () {
     return view('user.katalog.index');
 })->name('katalog.index');
+
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog');
 
 Route::get('/katalog/{id}', function ($id) {
     return view('user.katalog.detail', ['id' => $id]);
@@ -168,6 +170,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     // Rute Booking Admin
     Route::get('/pesanan', [AdminBookingController::class, 'index'])->name('admin.bookings.index');
     Route::post('/pesanan/{id}/update', [AdminBookingController::class, 'updateStatus'])->name('admin.bookings.update');
+
+    // Route Dashboard Pesanan Barang
+    Route::get('/pesanan-barang', [OrderBarangController::class, 'index'])->name('transaksi.index');
+    
+    // Route Update Status
+    Route::put('/pesanan-barang/{id}/update', [OrderBarangController::class, 'updateStatus'])->name('transaksi.update');
 });
 
 
@@ -178,9 +186,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/riwayat-transaksi', [RiwayatController::class, 'index'])->name('riwayat.index');
 
     // Cart
-    Route::middleware('auth')->group(function () {
-        Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::middleware(['auth'])->group(function () {
         Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+        Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+        Route::delete('/cart/delete/{id}', [CartController::class, 'destroy'])->name('cart.delete');
+        Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
     });
 
     // Tempatkan fitur yang BENAR-BENAR butuh login di sini.

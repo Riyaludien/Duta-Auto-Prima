@@ -26,10 +26,6 @@
                     <button class="nav-link active" id="mobil-tab" data-bs-toggle="tab" data-bs-target="#mobil-pane"
                         type="button"><i class="bi bi-car-front-fill me-2"></i>Mobil</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="motor-tab" data-bs-toggle="tab" data-bs-target="#motor-pane"
-                        type="button"><i class="bi bi-bicycle me-2"></i>Motor</button>
-                </li>
             </ul>
 
             <div class="tab-content" id="myTabContent">
@@ -59,18 +55,6 @@
                                 <span>Lainnya</span>
                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="motor-pane">
-                    <div class="row g-3 row-cols-2 row-cols-md-5">
-                        <div class="col"><a href="#" class="service-icon-box"><i class="bi bi-droplet"></i><span>Ganti
-                                    Oli<br>Motor</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-gear"></i><span>Service<br>CVT</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-disc"></i><span>Ganti<br>Ban</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-wrench"></i><span>Tune<br>Up</span></a></div>
                     </div>
                 </div>
             </div>

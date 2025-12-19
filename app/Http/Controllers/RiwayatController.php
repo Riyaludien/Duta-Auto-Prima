@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking; // Panggil Model Booking
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Review;
 
@@ -14,19 +15,22 @@ class RiwayatController extends Controller
         // 1. Ambil ID User
         $userId = Auth::id();
 
-        // 2. Siapkan Query Dasar (Milik user ini)
-        $query = Booking::where('user_id', $userId);
-
-        // 3. CEK FILTER: Jika ada request 'status', tambahkan filter
-        if ($request->has('status') && $request->status != '') {
-            $query->where('status', $request->status);
+        // 2. Query untuk Jasa (Booking)
+        $queryBooking = Booking::where('user_id', $userId);
+        if ($request->filled('status')) {
+            $queryBooking->where('status', $request->status);
         }
+        $bookings = $queryBooking->latest()->get();
 
-        // 4. Eksekusi (Urutkan dari terbaru)
-        $bookings = $query->latest()->get();
+        // 3. Query untuk Barang (Transaksi) - TAMBAHKAN INI
+        $queryTransaksi = Transaksi::with('details.barang')->where('user_id', $userId);
+        if ($request->filled('status')) {
+            $queryTransaksi->where('status', $request->status);
+        }
+        $transaksis = $queryTransaksi->latest()->get(); // Variabel ini yang dicari oleh Blade
 
-        // 5. Kirim ke View
-        return view('user.riwayat.index', compact('bookings'));
+        // 4. Kirim KEDUA variabel ke View dengan compact
+        return view('user.riwayat.index', compact('bookings', 'transaksis'));
     }
 
     public function cancel($id)
@@ -44,6 +48,23 @@ class RiwayatController extends Controller
 
         // 3. Jika status sudah 'Proses' atau lainnya
         return back()->with('error', 'Pesanan tidak bisa dibatalkan karena sudah diproses.');
+    }
+
+    public function cancelBarang($id)
+    {
+        $transaksi = Transaksi::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->where('status', 'Menunggu') // Hanya bisa batal jika masih menunggu
+            ->firstOrFail();
+
+        // Kembalikan stok barang jika dibatalkan
+        foreach ($transaksi->details as $detail) {
+            $detail->barang->increment('stok', $detail->jumlah);
+        }
+
+        $transaksi->update(['status' => 'Batal']);
+
+        return back()->with('success', 'Pesanan barang berhasil dibatalkan dan stok dikembalikan.');
     }
 
     public function cetakInvoice($id)

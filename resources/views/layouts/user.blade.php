@@ -27,6 +27,8 @@
 
             {{-- MENU UTAMA (Digeser ke Kanan dengan ms-auto) --}}
             <div class="collapse navbar-collapse" id="navbarNav">
+                {{-- Ganti bagian <ul class="navbar-nav ms-auto ..."> di layout kamu dengan ini --}}
+
                 <ul class="navbar-nav ms-auto align-items-center gap-4">
 
                     {{-- 1. BERANDA --}}
@@ -50,16 +52,32 @@
                         </a>
                     </li>
 
-                    {{-- 4. RIWAYAT TRANSAKSI (Hanya untuk yang sudah Login) --}}
+                    {{-- 4. RIWAYAT TRANSAKSI --}}
                     @auth
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('riwayat.*') ? 'text-danger fw-bold' : 'text-dark' }}" href="{{ route('riwayat.index') }}">
-                            Riwayat Transaksi
+                            Riwayat
+                        </a>
+                    </li>
+
+                    {{-- 5. KERANJANG (IKON DENGAN BADGE JUMLAH) --}}
+                    <li class="nav-item">
+                        <a class="nav-link position-relative {{ request()->routeIs('cart.*') ? 'text-danger' : 'text-dark' }}" href="{{ route('cart.index') }}">
+                            <i class="bi bi-bag fs-5"></i>
+                            {{-- Badge jumlah barang di keranjang --}}
+                            @php
+                            $cartCount = \App\Models\Cart::where('user_id', Auth::id())->sum('jumlah');
+                            @endphp
+                            @if($cartCount > 0)
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+                                {{ $cartCount }}
+                            </span>
+                            @endif
                         </a>
                     </li>
                     @endauth
 
-                    {{-- 5. MENU USER / LOGIN --}}
+                    {{-- 6. MENU USER / LOGIN --}}
                     @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-bold text-danger border border-danger rounded-pill px-3" href="#" role="button" data-bs-toggle="dropdown">

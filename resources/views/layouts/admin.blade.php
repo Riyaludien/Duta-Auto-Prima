@@ -28,11 +28,17 @@
                             Dashboard
                         </a>
                     </li>
-                    
+
                     {{-- 2. PESANAN MASUK (TITAH BARU) --}}
                     <li class="nav-item">
                         <a href="{{ route('admin.bookings.index') }}" class="nav-link {{ request()->routeIs('admin.bookings.*') ? 'active fw-bold text-warning' : '' }}">
-                            <i class="fas fa-clipboard-list me-1"></i> Pesanan Masuk
+                            <i class="fas fa-clipboard-list me-1"></i> Pesanan Jasa
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('transaksi.index') }}">
+                            <i class="bi bi-cart-check"></i> Pesanan Barang
                         </a>
                     </li>
 
@@ -95,33 +101,51 @@
     @if (session('success'))
     <script>
         Swal.fire({
-            toast: true, position: 'top-end', icon: 'success',
-            title: @json(session('success')),
-            showConfirmButton: false, timer: 2500, timerProgressBar: true,
-            background: '#198754', color: '#fff'
+            toast: true
+            , position: 'top-end'
+            , icon: 'success'
+            , title: @json(session('success'))
+            , showConfirmButton: false
+            , timer: 2500
+            , timerProgressBar: true
+            , background: '#198754'
+            , color: '#fff'
         });
+
     </script>
     @endif
 
     @if (session('error'))
     <script>
         Swal.fire({
-            toast: true, position: 'top-end', icon: 'error',
-            title: @json(session('error')),
-            showConfirmButton: false, timer: 2500, timerProgressBar: true,
-            background: '#dc3545', color: '#fff'
+            toast: true
+            , position: 'top-end'
+            , icon: 'error'
+            , title: @json(session('error'))
+            , showConfirmButton: false
+            , timer: 2500
+            , timerProgressBar: true
+            , background: '#dc3545'
+            , color: '#fff'
         });
+
     </script>
     @endif
 
     @if (session('deleted'))
     <script>
         Swal.fire({
-            toast: true, position: 'top-end', icon: 'info',
-            title: @json(session('deleted')),
-            showConfirmButton: false, timer: 2500, timerProgressBar: true,
-            background: '#fd0d0dff', color: '#fff'
+            toast: true
+            , position: 'top-end'
+            , icon: 'info'
+            , title: @json(session('deleted'))
+            , showConfirmButton: false
+            , timer: 2500
+            , timerProgressBar: true
+            , background: '#fd0d0dff'
+            , color: '#fff'
         });
+
     </script>
     @endif
 
@@ -133,20 +157,23 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     Swal.fire({
-                        title: 'Yakin ingin menghapus?',
-                        text: "Data yang dihapus tidak bisa dikembalikan!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#6c757d',
-                        confirmButtonText: 'Ya, hapus!',
-                        cancelButtonText: 'Batal'
+                        title: 'Yakin ingin menghapus?'
+                        , text: "Data yang dihapus tidak bisa dikembalikan!"
+                        , icon: 'warning'
+                        , showCancelButton: true
+                        , confirmButtonColor: '#d33'
+                        , cancelButtonColor: '#6c757d'
+                        , confirmButtonText: 'Ya, hapus!'
+                        , cancelButtonText: 'Batal'
                     }).then((result) => {
-                        if (result.isConfirmed) { form.submit(); }
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
                     });
                 });
             });
         });
+
     </script>
 
 </body>

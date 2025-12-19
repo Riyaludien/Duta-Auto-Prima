@@ -13,7 +13,9 @@ class Transaksi extends Model
     protected $fillable = [
         'user_id',
         'total_harga',
-        'status'
+        'status',
+        'metode_pembayaran', // TAMBAHKAN INI
+        'no_wa'              // TAMBAHKAN INI
     ];
 
     // Relasi ke user
