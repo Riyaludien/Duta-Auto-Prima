@@ -1,0 +1,548 @@
+:root {
+    /* --- PALET WARNA BARU (High Contrast Flag Theme) --- */
+    --primary-red: #FF0000;       /* Merah Terang (Vibrant) */
+    --primary-green: #2ECC71;     /* Hijau Emerald Cerah */
+    --bg-black: #000000;          /* Hitam Pekat (Pitch Black) */
+    --surface-dark: #121212;      /* Hitam Abu (Untuk Card & Navbar) */
+    --border-dark: #333333;       /* Border Halus */
+    
+    /* Warna Teks */
+    --text-main: #F0F8FF;         /* AliceBlue (Putih Bersih) */
+    --text-muted: #B0BEC5;        /* Abu Terang */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-black); 
+    color: var(--text-main);           
+}
+
+/* --- 1. NAVBAR (Dark Mode - UPDATED) --- */
+.navbar {
+    background-color: var(--bg-black) !important; 
+    border-bottom: 1px solid var(--border-dark);
+    box-shadow: none !important;
+    padding: 12px 0;
+}
+
+/* Link di Navbar */
+.navbar .nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar .nav-link:hover, .navbar .nav-link.active {
+    color: var(--primary-red) !important;
+}
+
+/* Tulisan Logo "Momo" jadi Putih */
+.navbar-brand {
+    color: white !important;
+}
+.navbar-brand span.text-danger {
+    color: var(--primary-red) !important;
+}
+
+/* Kolom Pencarian (Search Bar) di Navbar */
+.navbar .input-group-text, 
+.navbar input.form-control {
+    background-color: var(--surface-dark) !important;
+    border-color: var(--border-dark) !important;
+    color: var(--text-main) !important;
+}
+
+/* Ikon search jadi abu */
+.navbar .input-group-text i {
+    color: var(--text-muted);
+}
+
+/* Dropdown Menu User (Logout dll) */
+.dropdown-menu {
+    background-color: var(--surface-dark) !important;
+    border: 1px solid var(--border-dark) !important;
+}
+.dropdown-item {
+    color: var(--text-muted) !important;
+}
+.dropdown-item:hover {
+    background-color: var(--bg-black) !important;
+    color: var(--primary-red) !important;
+}
+
+
+/* --- 2. HERO SECTION --- */
+.hero-section {
+    background-color: var(--primary-red);
+    color: white;
+    padding-top: 60px;
+    padding-bottom: 120px;
+    position: relative;
+}
+
+.hero-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* --- 3. FLOATING SERVICE MENU --- */
+.floating-menu-container {
+    margin-top: -80px;
+    background: var(--surface-dark); 
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+    padding: 20px 30px;
+    position: relative;
+    z-index: 10;
+    border: 1px solid #333;
+}
+
+/* Tab Styling */
+.nav-tabs {
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+}
+
+.nav-link {
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.nav-link.active {
+    color: var(--primary-red);
+    background: transparent;
+    border-bottom: 3px solid var(--primary-red);
+}
+
+/* Icon Grid */
+.service-icon-box {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-main); 
+    transition: all 0.2s;
+    background: #1A1A1A;
+    height: 100%;
+}
+
+.service-icon-box:hover {
+    border-color: var(--primary-red);
+    background: #252525;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+}
+
+.service-icon-box i {
+    font-size: 1.6rem;
+    color: var(--primary-red);
+    margin-right: 12px;
+}
+
+.service-icon-box span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* --- 4. GENERAL SECTION STYLES --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-main);
+}
+
+.section-header p {
+    color: var(--text-muted) !important;
+}
+
+.see-all {
+    color: var(--primary-red);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --- 5. CARDS (Bengkel & Brand) --- */
+.custom-card {
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-dark);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    height: 100%;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+    border-color: #555;
+}
+
+.card-img-top {
+    height: 140px;
+    object-fit: cover;
+}
+
+.card-body-custom {
+    padding: 15px;
+}
+
+.card-title-custom {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-main);
+}
+
+/* --- 6. ARTIKEL SECTION --- */
+.article-card img {
+    border-radius: 10px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.article-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.article-title {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+/* --- 7. FEATURES --- */
+.feature-box {
+    background: var(--surface-dark); 
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+}
+
+.feature-box p {
+    color: var(--text-muted) !important;
+}
+
+.feature-icon-circle {
+    width: 70px;
+    height: 70px;
+    background: #330000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: var(--primary-red);
+    font-size: 2rem;
+    border: 1px solid var(--primary-red);
+}
+
+/* --- 8. STATS SECTION --- */
+.stats-section {
+    background: var(--surface-dark);
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* --- 9. FOOTER --- */
+footer {
+    background-color: #050505;
+    color: #ddd;
+    padding: 60px 0 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    display: block;
+    text-decoration: none;
+}
+
+.footer-title {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #888;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.copyright {
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #666;
+}
+
+/* --- TAMBAHAN UNTUK KATALOG --- */
+.product-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.product-price {
+    color: var(--primary-red);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.btn-outline-custom {
+    color: var(--primary-red);
+    border-color: var(--primary-red);
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: transparent;
+}
+
+.btn-outline-custom:hover {
+    background-color: var(--primary-red);
+    color: white;
+}
+
+/* --- SCROLL & BUTTONS --- */
+.horizontal-scroll-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.product-col {
+    flex: 0 0 auto;
+    width: 80%;
+}
+
+@media (min-width: 768px) {
+    .product-col {
+        width: 280px;
+    }
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--surface-dark); 
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #444;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-red);
+    cursor: pointer;
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.scroll-btn:hover {
+    background: var(--primary-red);
+    color: white;
+    border-color: var(--primary-red);
+}
+
+.scroll-btn.left { left: -20px; }
+.scroll-btn.right { right: -20px; }
+
+@media (max-width: 768px) {
+    .scroll-btn { display: none; }
+}
+
+/* --- LOKASI BENGKEL --- */
+.location-card {
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: var(--surface-dark); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+    border-color: #666;
+}
+
+.location-img-wrapper {
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+}
+
+.location-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.location-card:hover .location-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.status-badge.open {
+    color: var(--primary-green);
+    border: 1px solid var(--primary-green);
+}
+
+.status-badge.closed {
+    color: #FF4444;
+    border: 1px solid #FF4444;
+}
+
+.location-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.location-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.location-info {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.location-info i {
+    color: var(--primary-red);
+    margin-right: 8px;
+    margin-top: 3px;
+}
+
+.btn-maps {
+    margin-top: auto;
+    background-color: transparent;
+    color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    width: 100%;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+
+.btn-maps:hover {
+    background-color: var(--primary-red);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4); 
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-warning {
+    color: #ffc107 !important; 
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.4); 
+}
