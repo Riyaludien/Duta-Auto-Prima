@@ -137,6 +137,8 @@ Route::post('/riwayat/review', [RiwayatController::class, 'storeReview'])->name(
 Route::get('/katalog', [KatalogController::class, 'index'])
     ->name('katalog.index');
 
+Route::get('/tentang-kami', [DashboardController::class, 'about'])->name('about');
+
 // ====================================================
 // 2. LOGIKA REDIRECT SETELAH LOGIN
 // ====================================================

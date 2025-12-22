@@ -119,7 +119,9 @@
                     </p>
                     <div class="social-icons mt-3">
                         <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.instagram.com/masmomo_bengkelmobiljogja/" target="_blank" class="text-white fs-5">
+                            <i class="bi bi-instagram"></i>
+                        </a>
                         <a href="#"><i class="bi bi-youtube"></i></a>
                         <a href="#"><i class="bi bi-tiktok"></i></a>
                     </div>
@@ -128,7 +130,7 @@
                 <div class="col-md-2 col-6 mb-4">
                     <h6 class="footer-title">Perusahaan</h6>
                     <div class="footer-links">
-                        <a href="#">Tentang Kami</a>
+                        <a href="{{ route('about') }}">Tentang Kami</a>
                         <a href="https://api.whatsapp.com/send?phone=6283838762064&text=Halo%20Admin%20Bengkel%20Momo,%20saya%20butuh%20bantuan." target="_blank">Hubungi Kami</a>
                         <a href="#">Karir</a>
                         <a href="#">Blog</a>
@@ -139,7 +141,6 @@
                     <h6 class="footer-title">Layanan</h6>
                     <div class="footer-links">
                         <a href="#">Servis Mobil</a>
-                        <a href="#">Servis Motor</a>
                         <a href="#">Inspeksi</a>
                         <a href="#">Promo</a>
                     </div>

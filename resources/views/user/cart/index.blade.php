@@ -61,8 +61,8 @@
 
                     <div id="infoRekening" class="alert border-0 p-3 mb-3" style="display:none; background: #1a1a1a; color: #fff; border: 1px dashed #444 !important;">
                         <p class="small mb-1 text-secondary">Silakan transfer ke:</p>
-                        <h6 class="fw-bold text-white mb-1">BANK BCA - <span class="text-danger">1234567890</span></h6>
-                        <p class="small mb-0 text-white">A/N Bengkel Momo Indonesia</p>
+                        <h6 class="fw-bold text-white mb-1">BANK BCA - <span class="text-danger">1690316141</span></h6>
+                        <p class="small mb-0 text-white">A.N DIMAS ARIF PURNOMO </p>
                     </div>
 
                     <button type="submit" class="btn btn-danger w-100 fw-bold rounded-pill py-2 shadow-sm">CHECKOUT SEKARANG</button>

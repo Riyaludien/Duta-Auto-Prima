@@ -10,7 +10,9 @@ class AdminBookingController extends Controller
     public function index()
     {
         // Ambil semua data, urutkan dari yang terbaru
-        $bookings = Booking::latest()->get();
+        // Cari kode yang mengambil data bookings
+        $bookings = Booking::orderBy('created_at', 'desc')->paginate(10);
+
         return view('admin.bookings.index', compact('bookings'));
     }
 
@@ -18,7 +20,7 @@ class AdminBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
         $booking->update(['status' => $request->status]);
-        
+
         return back()->with('success', 'Status pesanan berhasil diubah!');
     }
 }

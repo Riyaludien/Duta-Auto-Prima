@@ -51,26 +51,10 @@
     }
 
     /* Garis Status di Kiri Kartu */
-    .border-status-selesai {
-        border-left: 5px solid #2ECC71;
-    }
-
-    /* Hijau */
-    .border-status-proses {
-        border-left: 5px solid #3498DB;
-    }
-
-    /* Biru */
-    .border-status-batal {
-        border-left: 5px solid #E74C3C;
-    }
-
-    /* Merah */
-    .border-status-pending {
-        border-left: 5px solid #F1C40F;
-    }
-
-    /* Kuning */
+    .border-status-selesai { border-left: 5px solid #2ECC71; } /* Hijau */
+    .border-status-proses { border-left: 5px solid #3498DB; } /* Biru */
+    .border-status-batal { border-left: 5px solid #E74C3C; } /* Merah */
+    .border-status-pending { border-left: 5px solid #F1C40F; } /* Kuning */
 
     .text-price {
         font-size: 1.2rem;
@@ -96,7 +80,6 @@
         color: #333;
         margin-bottom: 20px;
     }
-
 </style>
 
 {{-- HEADER --}}
@@ -133,111 +116,163 @@
     </div>
 
     {{-- LIST TRANSAKSI --}}
-    {{-- NAV TABS --}}
-    <ul class="nav nav-pills mb-4 gap-2" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-jasa-tab" data-bs-toggle="pill" data-bs-target="#tab-jasa" type="button" role="tab">
-                <i class="bi bi-tools me-1"></i> Servis & Jasa
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-barang-tab" data-bs-toggle="pill" data-bs-target="#tab-barang" type="button" role="tab">
-                <i class="bi bi-box-seam me-1"></i> Pembelian Barang
-            </button>
-        </li>
-    </ul>
+    <div class="row">
 
-    <div class="tab-content" id="pills-tabContent">
+        @forelse($bookings as $item)
+        {{-- LOGIKA WARNA STATUS --}}
+        @php
+            $statusColor = 'warning'; 
+            $borderColor = 'border-status-pending';
 
-        {{-- TAB 1: RIWAYAT JASA (KODE ASLI KAMU) --}}
-        <div class="tab-pane fade show active" id="tab-jasa" role="tabpanel">
-            <div class="row">
-                @forelse($bookings as $item)
-                {{-- Logika Warna Status Jasa --}}
-                @php
-                $statusColor = 'warning'; $borderColor = 'border-status-pending';
-                if($item->status == 'Proses') { $statusColor = 'primary'; $borderColor = 'border-status-proses'; }
-                elseif($item->status == 'Selesai') { $statusColor = 'success'; $borderColor = 'border-status-selesai'; }
-                elseif($item->status == 'Batal') { $statusColor = 'danger'; $borderColor = 'border-status-batal'; }
-                @endphp
+            if($item->status == 'Proses') {
+                $statusColor = 'primary'; 
+                $borderColor = 'border-status-proses';
+            } elseif($item->status == 'Selesai') {
+                $statusColor = 'success'; 
+                $borderColor = 'border-status-selesai';
+            } elseif($item->status == 'Batal') {
+                $statusColor = 'danger'; 
+                $borderColor = 'border-status-batal';
+            }
+        @endphp
 
-                <div class="col-12 mb-3">
-                    <div class="transaksi-card {{ $borderColor }}">
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div>
-                                <span class="badge bg-{{ $statusColor }} badge-status mb-2">{{ $item->status }}</span>
-                                <h5 class="fw-bold text-white mb-1">{{ $item->item_name }}</h5>
-                                <small class="text-muted">INV/JASA/{{ $item->created_at->format('Ymd') }}/{{ $item->id }}</small>
-                            </div>
-                            <div class="text-end">
-                                <small class="text-muted d-block">Total Biaya</small>
-                                <span class="text-price">{{ $item->item_price }}</span>
-                            </div>
+        <div class="col-12">
+            <div class="transaksi-card {{ $borderColor }}">
+                
+                {{-- Bagian Atas Card --}}
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span class="badge bg-{{ $statusColor }} badge-status">{{ $item->status }}</span>
+                            <small class="text-muted">INV/{{ $item->created_at->format('Ymd') }}/{{ $item->id }}</small>
                         </div>
-                        <div class="d-flex justify-content-end gap-2">
-                            @if($item->status == 'Menunggu')
-                            <form action="{{ route('riwayat.cancel', $item->id) }}" method="POST" class="delete-confirm">
-                                @csrf @method('PUT')
-                                <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Batalkan</button>
-                            </form>
-                            @endif
-                            <a href="https://wa.me/6283838762064" class="btn btn-sm btn-outline-success rounded-pill px-3">Hubungi Admin</a>
+                        <h5 class="fw-bold text-white mb-0">{{ $item->item_name }}</h5>
+                        <small class="text-muted">{{ $item->booking_date }} • Dibuat pada {{ $item->created_at->format('d M Y') }}</small>
+                    </div>
+                    <div class="text-end">
+                        <small class="text-muted d-block">Estimasi Biaya</small>
+                        <span class="text-price">{{ $item->item_price }}</span>
+                    </div>
+                </div>
+
+                {{-- Bagian Tengah Card --}}
+                <div class="bg-black p-3 rounded mb-3 border border-secondary border-opacity-25">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-dark p-2 rounded">
+                            <i class="bi bi-tools text-danger fs-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-white mb-0 fw-bold">Layanan Bengkel Momo</p>
+                            <small class="text-muted">Pemesan: {{ $item->customer_name }} ({{ $item->customer_phone }})</small>
                         </div>
                     </div>
                 </div>
-                @empty
-                <div class="empty-state">
-                    <i class="bi bi-calendar-x empty-icon"></i>
-                    <h5 class="text-white">Belum ada riwayat jasa</h5>
+
+                {{-- Bagian Tombol Aksi --}}
+                <div class="d-flex justify-content-end gap-2">
+
+                    {{-- 1. TOMBOL BATAL (Hanya muncul jika status Menunggu) --}}
+                    @if($item->status == 'Menunggu')
+                        <form action="{{ route('riwayat.cancel', $item->id) }}" method="POST" class="d-inline delete-confirm">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+                                <i class="bi bi-x-circle"></i> Batalkan
+                            </button>
+                        </form>
+                    @endif
+
+                    {{-- 2. TOMBOL AKSI JIKA SELESAI (Invoice & Ulasan) --}}
+                    @if($item->status == 'Selesai')
+                        
+                        {{-- Tombol Cetak Invoice --}}
+                        <a href="{{ route('riwayat.invoice', $item->id) }}" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-4">
+                            <i class="bi bi-printer"></i> Invoice
+                        </a>
+
+                        {{-- Logika Tombol Ulasan --}}
+                        @if($item->review)
+                            {{-- Jika SUDAH review --}}
+                            <button class="btn btn-sm btn-secondary rounded-pill px-4" disabled>
+                                <i class="bi bi-star-fill text-warning"></i> {{ $item->review->rating }}/5
+                            </button>
+                        @else
+                            {{-- Jika BELUM review --}}
+                            <button type="button" class="btn btn-sm btn-success rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#reviewModal{{ $item->id }}">
+                                <i class="bi bi-star"></i> Beri Ulasan
+                            </button>
+                            {{-- ⚠️ KODE MODAL TELAH DIHAPUS DARI SINI --}}
+                        @endif
+
+                    {{-- 3. TOMBOL HUBUNGI ADMIN (Muncul selain Selesai & Batal) --}}
+                    @elseif($item->status != 'Batal')
+                        <a href="https://wa.me/6283838762064?text=Halo%20Admin,%20saya%20mau%20tanya%20status%20booking%20{{ $item->item_name }}" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-4">
+                            <i class="bi bi-whatsapp"></i> Hubungi Admin
+                        </a>
+                    @endif
+
                 </div>
-                @endforelse
-            </div>
-        </div>
+            </div> {{-- Tutup Transaksi Card --}}
 
-        {{-- TAB 2: RIWAYAT BARANG (YANG BARU) --}}
-        <div class="tab-pane fade" id="tab-barang" role="tabpanel">
-            <div class="row">
-                @forelse($transaksis as $trx)
-                <div class="col-12 mb-3">
-                    <div class="transaksi-card border-status-proses">
-                        <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div>
-                                <span class="badge bg-primary badge-status mb-2">{{ $trx->status }}</span>
-                                <h5 class="fw-bold text-white mb-1">{{ $trx->nomor_invoice }}</h5>
-                                <small class="text-muted">Dipesan pada {{ $trx->created_at->format('d M Y H:i') }}</small>
-                            </div>
-                            <div class="text-end">
-                                <small class="text-muted d-block">Total Belanja</small>
-                                <span class="text-price">Rp {{ number_format($trx->total_harga, 0, ',', '.') }}</span>
-                            </div>
-                        </div>
 
-                        {{-- Daftar Item Barang --}}
-                        <div class="bg-black p-3 rounded mb-3 border border-secondary border-opacity-25">
-                            @foreach($trx->details as $detail)
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <small class="text-white">{{ $detail->barang->nama_barang }} (x{{ $detail->jumlah }})</small>
-                                <small class="text-muted">Rp {{ number_format($detail->harga * $detail->jumlah, 0, ',', '.') }}</small>
-                            </div>
-                            @endforeach
+            {{-- ✅ KODE MODAL DIPINDAHKAN KE SINI (DI LUAR CARD, TAPI MASIH DI DALAM COL-12) --}}
+            @if($item->status == 'Selesai' && !$item->review)
+            <div class="modal fade" id="reviewModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark text-white border-secondary">
+                        <div class="modal-header border-secondary">
+                            <h5 class="modal-title">Bagaimana pelayanan kami?</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                         </div>
+                        <form action="{{ route('riwayat.review.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="booking_id" value="{{ $item->id }}">
 
-                        <div class="d-flex justify-content-end gap-2">
-                            <a href="https://wa.me/6283838762064?text=Halo%20Admin,%20saya%20mau%20tanya%20pesanan%20{{ $trx->nomor_invoice }}" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-4">
-                                <i class="bi bi-whatsapp"></i> Tanya Admin
-                            </a>
-                        </div>
+                            <div class="modal-body text-center">
+                                <p class="text-muted mb-2">Layanan: {{ $item->item_name }}</p>
+
+                                {{-- Input Bintang --}}
+                                <div class="mb-3">
+                                    <label class="form-label d-block text-white">Beri Bintang</label>
+                                    <div class="btn-group" role="group">
+                                        @for($i=1; $i<=5; $i++) 
+                                            <input type="radio" class="btn-check" name="rating" id="star{{$i}}_{{$item->id}}" value="{{$i}}" autocomplete="off" required>
+                                            <label class="btn btn-outline-warning" for="star{{$i}}_{{$item->id}}">{{$i}} <i class="bi bi-star-fill"></i></label>
+                                        @endfor
+                                    </div>
+                                </div>
+
+                                {{-- Input Komentar --}}
+                                <div class="mb-3 text-start">
+                                    <label class="form-label text-white">Komentar (Opsional)</label>
+                                    <textarea name="comment" class="form-control bg-black text-white border-secondary" rows="3" placeholder="Contoh: Pelayanan cepat dan ramah..."></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-secondary">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-success">Kirim Ulasan</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                @empty
-                <div class="empty-state">
-                    <i class="bi bi-cart-x empty-icon"></i>
-                    <h5 class="text-white">Belum ada riwayat belanja</h5>
-                    <a href="{{ route('katalog.index') }}" class="btn btn-danger rounded-pill mt-3 px-4">Ke Katalog</a>
-                </div>
-                @endforelse
+            </div>
+            @endif
+            {{-- ✅ END KODE MODAL --}}
+
+        </div> {{-- Tutup Col-12 --}}
+
+        @empty
+        {{-- TAMPILAN JIKA BELUM ADA DATA --}}
+        <div class="col-12">
+            <div class="empty-state">
+                <i class="bi bi-cart-x empty-icon text-secondary" style="font-size: 4rem;"></i>
+                <h5 class="text-white mt-3">Belum ada riwayat transaksi</h5>
+                <p class="text-muted">Baginda belum pernah melakukan pemesanan jasa.</p>
+                <a href="{{ route('katalog.index') }}" class="btn btn-danger rounded-pill mt-3 px-4">Mulai Booking</a>
             </div>
         </div>
+        @endforelse
+
     </div>
 </div>
 
