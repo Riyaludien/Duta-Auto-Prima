@@ -97,7 +97,7 @@
                         </ul>
                     </li>
                     @else
-                    <li class="nav-item"><a class="btn btn-primary btn-sm rounded-pill px-4 ms-2" href="{{ route('login') }}">Masuk</a></li>
+                    <li class="nav-item"><a class="btn btn-primary btn-sm rounded-pill px-4 ms-2" href="{{ route('landing') }}">Masuk/Daftar</a></li>
                     @endauth
 
                 </ul>

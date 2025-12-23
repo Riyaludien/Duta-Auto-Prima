@@ -115,6 +115,8 @@ Route::get('/riwayat-transaksi', function () {
 Route::put('/riwayat/{id}/cancel', [RiwayatController::class, 'cancel'])->name('riwayat.cancel');
 
 Route::get('/riwayat/{id}/invoice', [RiwayatController::class, 'cetakInvoice'])->name('riwayat.invoice');
+// Route untuk Invoice Barang (Tambahkan jika belum ada)
+Route::get('/riwayat/invoice-barang/{id}', [RiwayatController::class, 'cetakInvoiceBarang'])->name('riwayat.invoice.barang');
 
 // Rute untuk memproses booking
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
@@ -175,7 +177,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // Route Dashboard Pesanan Barang
     Route::get('/pesanan-barang', [OrderBarangController::class, 'index'])->name('transaksi.index');
-    
+
     // Route Update Status
     Route::put('/pesanan-barang/{id}/update', [OrderBarangController::class, 'updateStatus'])->name('transaksi.update');
 });
