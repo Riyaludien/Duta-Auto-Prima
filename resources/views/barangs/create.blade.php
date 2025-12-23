@@ -36,7 +36,15 @@
 
             <div class="mb-3">
                 <label>Supplier</label>
-                <input type="text" name="supplier" class="form-control" value="{{ old('supplier') }}">
+                <select name="supplier_id" class="form-control" required>
+                    <option value="">-- Pilih Supplier --</option>
+
+                    @foreach ($suppliers as $supplier)
+                        <option value="{{ $supplier->id }}" {{ old('supplier_id') == $supplier->id ? 'selected' : '' }}>
+                            {{ $supplier->nama_supplier }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-3">

@@ -30,16 +30,36 @@ class CartController extends Controller
     // 2. FUNGSI YANG HILANG: Menambah barang ke keranjang
     public function add(Request $request, $id)
     {
+        $request->validate([
+            'jumlah' => 'required|integer|min:1'
+        ]);
+
         $barang = Barang::findOrFail($id);
-        $cart = Cart::where('user_id', Auth::id())->where('barang_id', $id)->first();
+
+        // Cegah melebihi stok
+        if ($request->jumlah > $barang->stok) {
+            return back()->with('error', 'Jumlah melebihi stok!');
+        }
+
+        $cart = Cart::where('user_id', Auth::id())
+            ->where('barang_id', $id)
+            ->first();
 
         if ($cart) {
-            $cart->update(['jumlah' => $cart->jumlah + 1]);
+            $total = $cart->jumlah + $request->jumlah;
+
+            if ($total > $barang->stok) {
+                return back()->with('error', 'Jumlah melebihi stok!');
+            }
+
+            $cart->update([
+                'jumlah' => $total
+            ]);
         } else {
             Cart::create([
                 'user_id' => Auth::id(),
                 'barang_id' => $id,
-                'jumlah' => 1
+                'jumlah' => $request->jumlah
             ]);
         }
 
