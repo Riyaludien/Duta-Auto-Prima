@@ -1,40 +1,40 @@
 :root {
     /* --- PRIMARY COLOR (BIRU UTAMA) --- */
-    --primary-blue: #2563EB;
+    --primary-blue: #2563eb;
     /* Biru modern (tailwind-ish) */
-    --primary-blue-hover: #1E40AF;
+    --primary-blue-hover: #1e40af;
     /* Hover lebih dalam */
 
     /* --- BACKGROUND --- */
-    --bg-main: #F8FAFC;
+    --bg-main: #f8fafc;
     /* Putih soft */
-    --surface-white: #FFFFFF;
+    --surface-white: #ffffff;
     /* Card putih */
-    --surface-light: #EFF6FF;
+    --surface-light: #eff6ff;
     /* Biru sangat muda */
 
     /* --- BORDER --- */
-    --border-light: #E2E8F0;
+    --border-light: #e2e8f0;
 
     /* --- ACCENT --- */
-    --accent-blue: #38BDF8;
+    --accent-blue: #38bdf8;
     /* Highlight */
-    --accent-soft: #DBEAFE;
+    --accent-soft: #dbeafe;
     /* Background hover */
 
     /* --- TEXT --- */
-    --text-main: #0F172A;
+    --text-main: #0f172a;
     /* Hitam navy */
-    --text-muted: #64748B;
+    --text-muted: #64748b;
     /* Abu modern */
 
     /* OPTIONAL (buat status dll) */
-    --success: #22C55E;
-    --danger: #EF4444;
+    --success: #22c55e;
+    --danger: #ef4444;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: var(--bg-main);
     color: var(--text-main);
 }
@@ -67,7 +67,7 @@ body {
 }
 
 .navbar-brand span.text-danger {
-    color: var(--primary-blue) !important
+    color: var(--primary-blue) !important;
 }
 
 /* Kolom Pencarian (Search Bar) di Navbar */
@@ -98,10 +98,9 @@ body {
     color: var(--primary-blue) !important;
 }
 
-
 /* --- 2. HERO SECTION --- */
 .hero-section {
-    background: linear-gradient(135deg, #2563EB, #38BDF8);
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
     color: white;
     padding: 0px;
     position: relative;
@@ -122,7 +121,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 .hero-title {
     animation: fadeUp 2s ease;
@@ -138,7 +137,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 .hero-slide .container {
@@ -562,8 +560,8 @@ footer {
 }
 
 .status-badge.closed {
-    color: #FF4444;
-    border: 1px solid #FF4444;
+    color: #ff4444;
+    border: 1px solid #ff4444;
 }
 
 .location-body {
@@ -620,4 +618,30 @@ footer {
 .text-warning {
     color: #ffc107 !important;
     text-shadow: 0 0 5px rgba(255, 193, 7, 0.4);
+}
+
+.running-text {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    align-items: center;
+    overflow: hidden;
+    background: #111;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.running-text p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: jalan 15s linear infinite;
+}
+
+@keyframes jalan {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }

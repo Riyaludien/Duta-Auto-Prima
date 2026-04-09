@@ -84,15 +84,33 @@ Route::get('/katalog/{id}', function ($id) {
     return view('user.katalog.detail', ['id' => $id]);
 })->name('katalog.detail');
 
+
+
+
 // --- JASA ---
 Route::get('/jasa', function () {
     return view('user.jasa.index');
 })->name('jasa.index');
 
 // --- LAYANAN (Dinamis) ---
+// Route::get('/layanan/{kategori}', function ($kategori) {
+//     return "Halaman Layanan: " . $kategori;
+// })->name('layanan.kategori');
 Route::get('/layanan/{kategori}', function ($kategori) {
-    return "Halaman Layanan: " . $kategori;
+    return view('user.layanan.' . $kategori);
 })->name('layanan.kategori');
+
+Route::get('/layanan/spooring', function () {
+
+    $jasa = DB::table('jasa')
+        ->where('kategori', 'spooring')
+        ->get();
+
+    return view('user.layanan.spooring&balancing', compact('jasa'));
+});
+
+
+
 
 // --- FOOTER (Lokasi & Artikel) ---
 Route::get('/lokasi', function () {
@@ -106,6 +124,16 @@ Route::get('/artikel', function () {
 Route::get('/artikel/{slug}', function ($slug) {
     return "Baca Artikel: $slug";
 })->name('artikel.detail');
+
+Route::view('/karir', 'user.footer.karir');
+Route::view('/blog', 'user.footer.blog');
+Route::view('/syarat&ketentuan', 'user.footer.syarat&ketentuan');
+Route::view('/kebijakanprivasi', 'user.footer.kebijakanprivasi');
+Route::view('/pusatbantuan', 'user.footer.pusatbantuan');
+Route::view('/daftarmitra', 'user.footer.daftarmitra');
+
+
+
 
 // Rute Riwayat Transaksi
 Route::get('/riwayat-transaksi', function () {

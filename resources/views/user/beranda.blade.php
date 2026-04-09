@@ -6,94 +6,107 @@
 
 
     <section class="hero-section">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
 
-        <!-- INDICATOR (titik bawah) -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            <!-- INDICATOR (titik bawah) -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="running-text">
+                <p>Selamat datang di Bengkel Momo 🚗 | Service cepat, harga bersahabat 😎 | Booking service sekarang juga
+                    🔧🔥</p>
+            </div>
+
+            <!-- <marquee behavior="scroll" direction="left">
+                            Selamat datang di Bengkel Momo 🚗 | Service cepat, harga bersahabat 😎
+                        </marquee> -->
+
+            <div class="carousel-inner">
+
+                <!-- SLIDE 1 -->
+                <div class="carousel-item active">
+                    <div class="hero-slide"
+                        style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-1.jpeg') }}');">
+                        <div class="container-fluid px-5">
+                            <h1 class="hero-title">Nikmati hematnya servis kendaraan!</h1>
+                            <p class="fs-5">Jelajahi promo dari bengkel terdekat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="carousel-item">
+                    <div class="hero-slide"
+                        style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-2.jpeg') }}');">
+                        <div class="container-fluid px-5">
+                            <h1 class="hero-title">Booking servis tanpa ribet</h1>
+                            <p class="fs-5">Langsung dari HP kamu 🚀</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="carousel-item">
+                    <div class="hero-slide"
+                        style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-3.jpeg') }}');">
+                        <div class="container-fluid px-5">
+                            <h1 class="hero-title">Bengkel terpercaya</h1>
+                            <p class="fs-5">Kualitas terjamin & profesional</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
         </div>
-
-        <div class="carousel-inner">
-
-            <!-- SLIDE 1 -->
-            <div class="carousel-item active">
-                <div class="hero-slide"
-                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-1.jpeg') }}');">
-                    <div class="container-fluid px-5">
-                        <h1 class="hero-title">Nikmati hematnya servis kendaraan!</h1>
-                        <p class="fs-5">Jelajahi promo dari bengkel terdekat</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 2 -->
-            <div class="carousel-item">
-                <div class="hero-slide"
-                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-2.jpeg') }}');">
-                    <div class="container-fluid px-5">
-                        <h1 class="hero-title">Booking servis tanpa ribet</h1>
-                        <p class="fs-5">Langsung dari HP kamu 🚀</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3 -->
-            <div class="carousel-item">
-                <div class="hero-slide"
-                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-3.jpeg') }}');">
-                    <div class="container-fluid px-5">
-                        <h1 class="hero-title">Bengkel terpercaya</h1>
-                        <p class="fs-5">Kualitas terjamin & profesional</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- BUTTON -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-
-    </div>
-</section>
+    </section>
 
     {{-- FLOATING MENU LAYANAN --}}
     <div class="container mb-5">
         <div class="floating-menu-container">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="mobil-tab" data-bs-toggle="tab" data-bs-target="#mobil-pane"
-                        type="button"><i class="bi bi-car-front-fill me-2"></i>Mobil</button>
-                </li>
-            </ul>
+            <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="mobil-tab" data-bs-toggle="tab" data-bs-target="#mobil-pane"
+                                                type="button"><i class="bi bi-car-front-fill me-2"></i>Mobil</button>
+                                        </li>
+                                    </ul> -->
 
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="mobil-pane">
                     <div class="row g-3 row-cols-2 row-cols-md-5">
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-gear-wide-connected"></i><span>Spooring &<br>Balancing</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-tools"></i><span>Service<br>Kaki-Kaki</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-speaker"></i><span>Audio<br>System</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
+                        <div class="col"><a href="{{ route('layanan.kategori', 'spooring&balancing') }}"
+                                class="service-icon-box"><i class="bi bi-gear-wide-connected"></i><span>Spooring
+                                    &<br>Balancing</span></a></div>
+                        <div class="col"><a href="{{ route('layanan.kategori', 'servicekaki2') }}"
+                                class="service-icon-box"><i class="bi bi-tools"></i><span>Service<br>Kaki-Kaki</span></a>
+                        </div>
+                        <div class="col"><a href="{{ route('layanan.kategori', 'audiosystem') }}"
+                                class="service-icon-box"><i class="bi bi-speaker"></i><span>Audio<br>System</span></a></div>
+                        <div class="col"><a href="{{ route('layanan.kategori', 'gantioli') }}" class="service-icon-box"><i
                                     class="bi bi-droplet-fill"></i><span>Ganti<br>Oli</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
-                                    class="bi bi-lightbulb"></i><span>Spesialis<br>Lampu</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
+                        <div class="col"><a href="{{ route('layanan.kategori', 'spesialislampu') }}"
+                                class="service-icon-box"><i class="bi bi-lightbulb"></i><span>Spesialis<br>Lampu</span></a>
+                        </div>
+                        <div class="col"><a href="{{ route('layanan.kategori', 'serviceac') }}" class="service-icon-box"><i
                                     class="bi bi-fan"></i><span>Service<br>AC</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i class="bi bi-disc"></i><span>Ban
+                        <div class="col"><a href="{{ route('layanan.kategori', 'ban&velg') }}" class="service-icon-box"><i
+                                    class="bi bi-disc"></i><span>Ban
                                     &<br>Velg</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
+                        <div class="col"><a href="{{ route('layanan.kategori', 'inspeksimobil') }}"
+                                class="service-icon-box"><i
                                     class="bi bi-clipboard-check"></i><span>Inspeksi<br>Mobil</span></a></div>
-                        <div class="col"><a href="#" class="service-icon-box"><i
+                        <div class="col"><a href="{{ route('layanan.kategori', 'kacafilm') }}" class="service-icon-box"><i
                                     class="bi bi-window"></i><span>Kaca<br>Film</span></a></div>
                         <div class="col">
                             <a href="{{ route('jasa.index') }}" class="service-icon-box">
