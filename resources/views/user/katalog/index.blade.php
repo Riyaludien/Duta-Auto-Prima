@@ -4,6 +4,7 @@
 
 @section('content')
 
+<<<<<<< HEAD
     {{-- 1. CSS KHUSUS TEMA DARK MODE (HIGH CONTRAST) --}}
     <style>
         :root {
@@ -24,6 +25,44 @@
             --text-muted: #B0BEC5;
             /* Abu Terang */
         }
+=======
+{{-- 1. CSS KHUSUS TEMA light MODE (HIGH CONTRAST) --}}
+<style>
+    :root {
+        /* --- PRIMARY COLOR (BIRU UTAMA) --- */
+        --primary-blue: #2563EB;
+        /* Biru modern (tailwind-ish) */
+        --primary-blue-hover: #1E40AF;
+        /* Hover lebih dalam */
+
+        /* --- BACKGROUND --- */
+        --bg-main: #F8FAFC;
+        /* Putih soft */
+        --surface-white: #FFFFFF;
+        /* Card putih */
+        --surface-light: #EFF6FF;
+        /* Biru sangat muda */
+
+        /* --- BORDER --- */
+        --border-light: #E2E8F0;
+
+        /* --- ACCENT --- */
+        --accent-blue: #38BDF8;
+        /* Highlight */
+        --accent-soft: #DBEAFE;
+        /* Background hover */
+
+        /* --- TEXT --- */
+        --text-main: #0F172A;
+        /* Hitam navy */
+        --text-muted: #64748B;
+        /* Abu modern */
+
+        /* OPTIONAL (buat status dll) */
+        --success: #22C55E;
+        --danger: #EF4444;
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         /* Override Body khusus halaman ini */
         body {
@@ -31,6 +70,7 @@
             color: var(--text-main) !important;
         }
 
+<<<<<<< HEAD
         /* Styling Sidebar Filter (Dark) */
         .filter-card {
             background: var(--surface-dark);
@@ -65,6 +105,42 @@
             color: var(--text-main);
             box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
         }
+=======
+    /* Styling Sidebar Filter (light) */
+    .filter-card {
+        background: var(--surface-light);
+        border-radius: 12px;
+        border: 1px solid var(--border-light);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        /* Shadow lebih gelap */
+    }
+
+    .filter-header {
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--primary-blue);
+        /* Judul Filter Merah */
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+    }
+
+    /* Styling Input & Checkbox di light Mode */
+    .form-control,
+    .form-select {
+        background-color: #e6e6e6;
+        border: 1px solid var(--border-light);
+        color: var(--text-main);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        background-color: #ffffff;
+        border-color: var(--primary-red);
+        color: var(--text-main);
+        box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         .form-check-input {
             background-color: #1E1E1E;
@@ -76,6 +152,7 @@
             border-color: var(--primary-red);
         }
 
+<<<<<<< HEAD
         /* Styling Card Produk (Dark) */
         .product-card {
             background: var(--surface-dark);
@@ -88,6 +165,20 @@
             display: flex;
             flex-direction: column;
         }
+=======
+    /* Styling Card Produk (light) */
+    .product-card {
+        background: var(--surface-light);
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         .product-card:hover {
             border-color: var(--primary-red);
@@ -118,6 +209,7 @@
             opacity: 1;
         }
 
+<<<<<<< HEAD
         .badge-promo {
             position: absolute;
             top: 10px;
@@ -131,6 +223,21 @@
             z-index: 2;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
+=======
+    .badge-promo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: var(--primary-blue);
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 4px;
+        z-index: 2;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         /* Tombol Tambah (Lingkaran) */
         .btn-add-cart {
@@ -147,6 +254,7 @@
             transition: 0.2s;
         }
 
+<<<<<<< HEAD
         .btn-add-cart:hover {
             background: var(--primary-green);
             color: #000;
@@ -154,6 +262,15 @@
             box-shadow: 0 0 10px var(--primary-green);
             /* Glow Hijau */
         }
+=======
+    .btn-add-cart:hover {
+        background: var(--primary-blue);
+        color: #000;
+        /* Teks hitam saat hover hijau */
+        box-shadow: 0 0 10px var(--primary-blue-hover);
+        /* Glow Hijau */
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         /* Teks dan Harga */
         .text-price {
@@ -173,12 +290,21 @@
             color: var(--primary-red);
         }
 
+<<<<<<< HEAD
         /* Pagination Dark */
         .pagination .page-link {
             background-color: var(--surface-dark);
             border-color: var(--border-dark);
             color: var(--text-main);
         }
+=======
+    /* Pagination light */
+    .pagination .page-link {
+        background-color: var(--surface-light);
+        border-color: var(--border-light);
+        color: var(--text-main);
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         .pagination .page-item.active .page-link {
             background-color: var(--primary-red);
@@ -193,12 +319,21 @@
 
         /* --- TAMBAHAN: UPDATE NAVBAR JADI HITAM (Override Layout) --- */
 
+<<<<<<< HEAD
         /* 1. Ubah Background Navbar jadi Hitam */
         .navbar {
             background-color: var(--bg-black) !important;
             border-bottom: 1px solid var(--border-dark);
             box-shadow: none !important;
         }
+=======
+    /* 1. Ubah Background Navbar jadi Hitam */
+    .navbar {
+        background-color: var(--bg-black) !important;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: none !important;
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         /* 2. Ubah Warna Teks Menu jadi Putih */
         .navbar .nav-link {
@@ -209,6 +344,7 @@
             color: var(--primary-red) !important;
         }
 
+<<<<<<< HEAD
         /* 3. Ubah Tulisan Logo "Momo" jadi Putih (Biar kebaca) */
         .navbar-brand {
             color: white !important;
@@ -221,17 +357,39 @@
             border-color: var(--border-dark) !important;
             color: var(--text-main) !important;
         }
+=======
+    /* 3. Ubah Tulisan Logo "Momo" jadi Putih (Biar kebaca) */
+    .navbar-brand {
+        color: black !important;
+    }
+
+    /* 4. Ubah Kotak Pencarian (Search Bar) di Navbar jadi Gelap */
+    .navbar .input-group-text,
+    .navbar input.form-control {
+        background-color: var(--surface-light) !important;
+        border-color: var(--border-light) !important;
+        color: var(--text-main) !important;
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         /* Ubah ikon search jadi abu */
         .navbar .input-group-text i {
             color: var(--text-muted);
         }
 
+<<<<<<< HEAD
         /* 5. Dropdown Menu User (Logout dll) jadi Gelap */
         .dropdown-menu {
             background-color: var(--surface-dark) !important;
             border: 1px solid var(--border-dark) !important;
         }
+=======
+    /* 5. Dropdown Menu User (Logout dll) jadi Gelap */
+    .dropdown-menu {
+        background-color: var(--surface-light) !important;
+        border: 1px solid var(--border-light) !important;
+    }
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
 
         .dropdown-item {
             color: var(--text-muted) !important;
@@ -256,6 +414,7 @@
 
         <div class="row">
 
+<<<<<<< HEAD
             <div class="col-lg-3 mb-4">
                 <div class="filter-card p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -267,6 +426,79 @@
                                 style="color: var(--primary-red); font-size: 0.7rem;">
                                 RESET ALL
                             </a>
+=======
+    <div class="row">
+
+        <div class="col-lg-3 mb-4">
+            <div class="filter-card p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold m-0" style="color: var(--text-main);"><i class="bi bi-funnel me-2"></i>FILTER</h5>
+                    {{-- Tombol Reset kecil di pojok kanan atas filter --}}
+                    @if(request()->anyFilled(['kategori', 'min', 'max', 'search']))
+                    <a href="/katalog" class="text-decoration-none small" style="color: var(--primary-red); font-size: 0.7rem;">
+                        RESET ALL
+                    </a>
+                    @endif
+                </div>
+
+                <form action="/katalog" method="GET">
+                    <div class="mb-4">
+                        <div class="filter-header">Kategori</div>
+
+                        @foreach ($kategoris as $kategori)
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="kategori" value="{{ $kategori->id }}" id="cat_{{ $kategori->id }}" {{ request('kategori') == $kategori->id ? 'checked' : '' }}>
+                            <label class="form-check-label small text-muted" for="cat_{{ $kategori->id }}">
+                                {{ $kategori->nama_kategori }}
+                            </label>
+                        </div>
+                        @endforeach
+                    </div>
+
+                    <hr style="border-color: var(--border-light);">
+
+                    <div class="mb-4">
+                        <div class="filter-header">Rentang Harga</div>
+                        <div class="d-flex gap-2 align-items-center mb-2">
+                            <input type="number" name="min" class="form-control form-control-sm" placeholder="Min" value="{{ request('min') }}">
+                            <span class="text-muted">-</span>
+                            <input type="number" name="max" class="form-control form-control-sm" placeholder="Max" value="{{ request('max') }}">
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-sm rounded-pill fw-bold" style="background-color: var(--primary-red); color: white;">
+                            TERAPKAN
+                        </button>
+
+                        {{-- Tombol Reset sebagai outline di bawah tombol terapkan --}}
+                        <a href="/katalog " class="btn btn-sm rounded-pill fw-bold btn-outline-secondary" style="font-size: 0.75rem; border-color: var(--border-light); color: var(--text-muted);">
+                            BATALKAN FILTER
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold m-0" style="color: var(--text-main);">Semua Produk</h5>
+                <select class="form-select w-auto form-select-sm rounded-pill px-3">
+                    <option>Urutkan: Terbaru</option>
+                    <option>Harga: Rendah ke Tinggi</option>
+                    <option>Harga: Tinggi ke Rendah</option>
+                </select>
+            </div>
+
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                @forelse ($barangs as $barang)
+                <div class="col">
+                    <div class="product-card">
+
+                        @if($barang->stok > 0)
+                        <div class="badge-promo">READY</div>
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
                         @endif
                     </div>
 
@@ -310,7 +542,42 @@
                                 BATALKAN FILTER
                             </a>
                         </div>
+<<<<<<< HEAD
                     </form>
+=======
+
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <small class="mb-1 text-muted" style="font-size: 0.75rem;">
+                                {{ $barang->kategori->nama_kategori ?? 'Tanpa Kategori' }}
+                            </small>
+
+                            <h6 class="fw-bold mb-1 text-truncate product-title">
+                                <a href="#">
+                                    {{ $barang->nama_barang }}
+                                </a>
+                            </h6>
+
+                            <div class="mb-2 small">
+                                <i class="bi bi-star-fill" style="color: #F1C40F;"></i>
+                                <span class="text-muted ms-1">(4.8)</span>
+                            </div>
+
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <div class="text-price">
+                                    Rp {{ number_format($barang->harga, 0, ',', '.') }}
+                                </div>
+
+                                <form action="{{ route('cart.add', $barang->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="jumlah" value="1">
+                                    <button type="submit" class="btn-add-cart" title="Tambah ke Keranjang">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
                 </div>
             </div>
 

@@ -100,7 +100,12 @@ body {
 
 /* --- 2. HERO SECTION --- */
 .hero-section {
+<<<<<<< HEAD
     background: linear-gradient(135deg, #2563eb, #38bdf8);
+=======
+    background: linear-gradient(135deg, #2563EB, #38BDF8);
+    background-repeat: no-repeat;
+>>>>>>> 1c33b85b91dd56bd1fa1c80d1a28068736ebf1e7
     color: white;
     padding: 0px;
     position: relative;
@@ -124,7 +129,7 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 .hero-title {
-    animation: fadeUp 2s ease;
+    animation: fadeUp 2s ease forwards;
 }
 
 @keyframes fadeUp {
@@ -352,7 +357,7 @@ body {
 
 /* --- 9. FOOTER --- */
 footer {
-    background-color: #050505;
+    background-color: var(--primary-blue-hover);
     color: #ddd;
     padding: 60px 0 20px;
     border-top: 1px solid #333;
@@ -374,7 +379,7 @@ footer {
 }
 
 .footer-links a {
-    color: #888;
+    color: #000000;
     text-decoration: none;
     display: block;
     margin-bottom: 10px;
@@ -397,7 +402,7 @@ footer {
     padding-top: 20px;
     font-size: 0.85rem;
     text-align: center;
-    color: #666;
+    color: #fff;
 }
 
 /* --- TAMBAHAN UNTUK KATALOG --- */
