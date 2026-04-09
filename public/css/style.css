@@ -1,33 +1,49 @@
 :root {
-    /* --- PALET BARU (Modern Dark Professional) --- */
-    --primary-red: #E53935;        /* Merah lebih soft & elegan */
-    --primary-red-hover: #C62828;  /* Hover lebih dalam */
+    /* --- PRIMARY COLOR (BIRU UTAMA) --- */
+    --primary-blue: #2563EB;
+    /* Biru modern (tailwind-ish) */
+    --primary-blue-hover: #1E40AF;
+    /* Hover lebih dalam */
 
-    --bg-main: #0F172A;            /* Dark navy (lebih enak dari hitam pekat) */
-    --surface-dark: #1E293B;       /* Card & navbar */
-    --surface-light: #334155;      /* Hover / layer */
+    /* --- BACKGROUND --- */
+    --bg-main: #F8FAFC;
+    /* Putih soft */
+    --surface-white: #FFFFFF;
+    /* Card putih */
+    --surface-light: #EFF6FF;
+    /* Biru sangat muda */
 
-    --border-dark: #2D3748;        /* Border subtle */
+    /* --- BORDER --- */
+    --border-light: #E2E8F0;
 
-    /* Accent tambahan biar ga monoton */
-    --accent-blue: #38BDF8;        /* Buat highlight kecil */
+    /* --- ACCENT --- */
+    --accent-blue: #38BDF8;
+    /* Highlight */
+    --accent-soft: #DBEAFE;
+    /* Background hover */
 
-    /* Text */
-    --text-main: #F8FAFC;          /* Putih soft */
-    --text-muted: #94A3B8;         /* Abu modern */
+    /* --- TEXT --- */
+    --text-main: #0F172A;
+    /* Hitam navy */
+    --text-muted: #64748B;
+    /* Abu modern */
+
+    /* OPTIONAL (buat status dll) */
+    --success: #22C55E;
+    --danger: #EF4444;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-main); 
-    color: var(--text-main);           
+    background-color: var(--bg-main);
+    color: var(--text-main);
 }
 
 /* --- 1. NAVBAR (Dark Mode - UPDATED) --- */
 .navbar {
-    background-color: rgba(15, 23, 42, 0.8) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-light);
     box-shadow: none !important;
     padding: 12px 0;
 }
@@ -39,20 +55,23 @@ body {
     transition: 0.3s;
 }
 
-.navbar .nav-link:hover, .navbar .nav-link.active {
-    color: var(--primary-red) !important;
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--primary-blue) !important;
 }
 
 /* Tulisan Logo "Momo" jadi Putih */
 .navbar-brand {
     color: white !important;
+    color: var(--text-main) !important;
 }
+
 .navbar-brand span.text-danger {
-    color: var(--primary-red) !important;
+    color: var(--primary-blue) !important
 }
 
 /* Kolom Pencarian (Search Bar) di Navbar */
-.navbar .input-group-text, 
+.navbar .input-group-text,
 .navbar input.form-control {
     background-color: var(--surface-dark) !important;
     border-color: var(--border-dark) !important;
@@ -69,40 +88,80 @@ body {
     background-color: var(--surface-dark) !important;
     border: 1px solid var(--border-dark) !important;
 }
+
 .dropdown-item {
     color: var(--text-muted) !important;
 }
+
 .dropdown-item:hover {
     background-color: var(--bg-black) !important;
-    color: var(--primary-red) !important;
+    color: var(--primary-blue) !important;
 }
 
 
 /* --- 2. HERO SECTION --- */
 .hero-section {
-    background-color: var(--primary-red);
+    background: linear-gradient(135deg, #2563EB, #38BDF8);
     color: white;
-    padding-top: 60px;
-    padding-bottom: 120px;
+    padding: 0px;
     position: relative;
 }
 
+.hero-slide {
+    height: 65vh;
+    /* FULL layar */
+    background-size: cover;
+    background-position: center-center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    background-repeat: no-repeat; /* INI KUNCINYA 🔥 */
+}
+
+.hero-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+}
 .hero-title {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.hero-slide .container {
+    margin-top: -20px;
+}
+
+/* --- RESPONSIVE HERO --- */
+@media (max-width: 768px) {
+    .hero-slide {
+        height: 50vh;
+    }
 }
 
 /* --- 3. FLOATING SERVICE MENU --- */
 .floating-menu-container {
     margin-top: -80px;
-    background: var(--surface-dark); 
+    background: var(--surface-white);
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
     padding: 20px 30px;
     position: relative;
     z-index: 10;
-    border: 1px solid #333;
+    border: 1px solid var(--border-light);
 }
 
 /* Tab Styling */
@@ -120,9 +179,9 @@ body {
 }
 
 .nav-link.active {
-    color: var(--primary-red);
+    color: var(--primary-blue);
     background: transparent;
-    border-bottom: 3px solid var(--primary-red);
+    border-bottom: 3px solid var(--primary-blue);
 }
 
 /* Icon Grid */
@@ -130,25 +189,25 @@ body {
     display: flex;
     align-items: center;
     padding: 12px;
-    border: 1px solid #333;
-    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
     text-decoration: none;
-    color: var(--text-main); 
-    transition: all 0.2s;
-    background: #1A1A1A;
+    color: var(--text-main);
+    transition: all 0.25s ease;
+    background: var(--surface-white);
     height: 100%;
 }
 
 .service-icon-box:hover {
-    border-color: var(--primary-red);
-    background: #252525;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+    border-color: var(--primary-blue);
+    background: var(--accent-soft);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
 }
 
 .service-icon-box i {
     font-size: 1.6rem;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     margin-right: 12px;
 }
 
@@ -177,7 +236,7 @@ body {
 }
 
 .see-all {
-    color: var(--primary-red);
+    color: var(--primary-blue);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
@@ -185,11 +244,11 @@ body {
 
 /* --- 5. CARDS (Bengkel & Brand) --- */
 .custom-card {
-    border: 1px solid #333;
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     overflow: hidden;
-    background: var(--surface-dark);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background: var(--surface-white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     height: 100%;
     text-decoration: none;
@@ -200,8 +259,8 @@ body {
 
 .custom-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    border-color: var(--surface-light);
+    border-color: var(--primary-blue);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
 }
 
 .card-img-top {
@@ -247,13 +306,13 @@ body {
 
 /* --- 7. FEATURES --- */
 .feature-box {
-    background: var(--surface-dark); 
+    background: var(--surface-white);
     padding: 30px 20px;
     border-radius: 10px;
     text-align: center;
     height: 100%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    border: 1px solid #333;
+    border: 1px solid var(--border-light);
 }
 
 .feature-box p {
@@ -263,20 +322,21 @@ body {
 .feature-icon-circle {
     width: 70px;
     height: 70px;
-    background: #330000;
+    background: var(--accent-soft);
+    /* biru muda soft */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 15px;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     font-size: 2rem;
-    border: 1px solid var(--primary-red);
+    border: 1px solid var(--primary-blue);
 }
 
 /* --- 8. STATS SECTION --- */
 .stats-section {
-    background: var(--surface-dark);
+    background: var(--surface-white);
     padding: 40px 0;
     margin-top: 50px;
 }
@@ -284,7 +344,7 @@ body {
 .stat-number {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .stat-label {
@@ -353,15 +413,15 @@ footer {
 }
 
 .product-price {
-    color: var(--primary-red);
+    color: var(--primary-blue);
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 15px;
 }
 
 .btn-outline-custom {
-    color: var(--primary-red);
-    border-color: var(--primary-red);
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
     width: 100%;
     font-size: 0.9rem;
     font-weight: 600;
@@ -369,7 +429,7 @@ footer {
 }
 
 .btn-outline-custom:hover {
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     color: white;
     box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
 }
@@ -413,7 +473,7 @@ footer {
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
-    background: var(--surface-dark); 
+    background: var(--surface-white);
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     border: 1px solid #444;
@@ -421,30 +481,37 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     cursor: pointer;
     opacity: 0.9;
     transition: 0.3s;
 }
 
 .scroll-btn:hover {
-    background: var(--primary-red);
+    background: var(--primary-blue);
     color: white;
-    border-color: var(--primary-red);
+    border-color: var(--primary-blue);
 }
 
-.scroll-btn.left { left: -20px; }
-.scroll-btn.right { right: -20px; }
+.scroll-btn.left {
+    left: -20px;
+}
+
+.scroll-btn.right {
+    right: -20px;
+}
 
 @media (max-width: 768px) {
-    .scroll-btn { display: none; }
+    .scroll-btn {
+        display: none;
+    }
 }
 
 /* --- LOKASI BENGKEL --- */
 .location-card {
-    border: 1px solid #333;
+    border: 1px solid var(--border-light);
     border-radius: 12px;
-    background: var(--surface-dark); 
+    background: var(--surface-white);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     overflow: hidden;
@@ -522,7 +589,7 @@ footer {
 }
 
 .location-info i {
-    color: var(--primary-red);
+    color: var(--primary-blue);
     margin-right: 8px;
     margin-top: 3px;
 }
@@ -530,8 +597,8 @@ footer {
 .btn-maps {
     margin-top: auto;
     background-color: transparent;
-    color: var(--primary-red);
-    border: 1px solid var(--primary-red);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
     font-weight: 600;
     font-size: 0.9rem;
     padding: 8px 0;
@@ -541,9 +608,9 @@ footer {
 }
 
 .btn-maps:hover {
-    background-color: var(--primary-red);
+    background-color: var(--primary-blue);
     color: white;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4); 
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
 .text-muted {
@@ -551,6 +618,6 @@ footer {
 }
 
 .text-warning {
-    color: #ffc107 !important; 
-    text-shadow: 0 0 5px rgba(255, 193, 7, 0.4); 
+    color: #ffc107 !important;
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.4);
 }

@@ -5,18 +5,64 @@
 @section('content')
 
 
-    {{-- HERO SECTION --}}
-    <section class="hero-section"
-        style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ asset('images/banner-1.jpeg') }}'); background-size: cover; background-position: center;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-7 text-white">
-                    <h1 class="hero-title">Nikmati hematnya servis kendaraan!</h1>
-                    <p class="fs-5 opacity-75">Jelajahi promo dari bengkel terdekat dan booking sekarang.</p>
+    <section class="hero-section">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- INDICATOR (titik bawah) -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <!-- SLIDE 1 -->
+            <div class="carousel-item active">
+                <div class="hero-slide"
+                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-1.jpeg') }}');">
+                    <div class="container-fluid px-5">
+                        <h1 class="hero-title">Nikmati hematnya servis kendaraan!</h1>
+                        <p class="fs-5">Jelajahi promo dari bengkel terdekat</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- SLIDE 2 -->
+            <div class="carousel-item">
+                <div class="hero-slide"
+                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-2.jpeg') }}');">
+                    <div class="container-fluid px-5">
+                        <h1 class="hero-title">Booking servis tanpa ribet</h1>
+                        <p class="fs-5">Langsung dari HP kamu 🚀</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="carousel-item">
+                <div class="hero-slide"
+                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('images/banner-3.jpeg') }}');">
+                    <div class="container-fluid px-5">
+                        <h1 class="hero-title">Bengkel terpercaya</h1>
+                        <p class="fs-5">Kualitas terjamin & profesional</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+
+        <!-- BUTTON -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
 
     {{-- FLOATING MENU LAYANAN --}}
     <div class="container mb-5">
@@ -118,7 +164,7 @@
                         {{-- Ganti class col-6 dst menjadi product-item --}}
                         <div class="product-item p-2">
                             <div class="custom-card h-100 d-flex flex-column shadow-sm border-0"
-                                style="background: #1c1c1c; border-radius: 12px;">
+                                style="background: #e6e6e6; border-radius: 12px;">
                                 <img src="{{ $barang->gambar ? asset('storage/' . $barang->gambar) : asset('images/katalog/default.jpg') }}"
                                     class="card-img-top" alt="{{ $barang->nama_barang }}">
 
@@ -127,12 +173,12 @@
                                         {{ $barang->kategori->nama_kategori ?? 'Umum' }}
                                     </span>
 
-                                    <h6 class="card-title-custom text-white text-wrap mt-1 mb-2"
+                                    <h6 class="card-title-custom text-black text-wrap mt-1 mb-2"
                                         style="font-size: 0.9rem; line-height: 1.2;">
                                         {{ Str::limit($barang->nama_barang, 40) }}
                                     </h6>
 
-                                    <div class="product-price fw-bold text-white">
+                                    <div class="product-price fw-bold text-black">
                                         Rp {{ number_format($barang->harga, 0, ',', '.') }}
                                     </div>
                                 </div>
@@ -250,7 +296,7 @@
             @if(isset($reviews) && $reviews->count() > 0)
                 @foreach($reviews as $review)
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-card h-100 p-4 border-0 shadow-sm" style="background: #1c1c1c;">
+                        <div class="custom-card h-100 p-4 border-0 shadow-sm" style="background: #e6e6e6;">
 
                             {{-- Header Ulasan (Avatar & Nama) --}}
                             <div class="d-flex align-items-center mb-3">
@@ -259,7 +305,7 @@
                                     {{ substr($review->user->name ?? 'U', 0, 1) }}
                                 </div>
                                 <div>
-                                    <h6 class="text-white mb-0 fw-bold">{{ $review->user->name ?? 'Pelanggan' }}</h6>
+                                    <h6 class="text-black mb-0 fw-bold">{{ $review->user->name ?? 'Pelanggan' }}</h6>
                                     <small class="text-muted"
                                         style="font-size: 12px;">{{ $review->created_at->diffForHumans() }}</small>
                                 </div>
@@ -276,7 +322,7 @@
                             <div class="position-relative">
                                 <i class="bi bi-quote text-secondary position-absolute top-0 start-0 opacity-25"
                                     style="font-size: 2rem; transform: translate(-10px, -20px);"></i>
-                                <p class="card-text text-light fst-italic ps-3 mb-0" style="min-height: 50px;">
+                                <p class="card-text text-dark fst-italic ps-3 mb-0" style="min-height: 50px;">
                                     "{{ Str::limit($review->comment ?? 'Pelayanan sangat memuaskan!', 100) }}"
                                 </p>
                             </div>
