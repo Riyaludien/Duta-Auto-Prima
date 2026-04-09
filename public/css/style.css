@@ -1,25 +1,32 @@
 :root {
-    /* --- PALET WARNA BARU (High Contrast Flag Theme) --- */
-    --primary-red: #FF0000;       /* Merah Terang (Vibrant) */
-    --primary-green: #2ECC71;     /* Hijau Emerald Cerah */
-    --bg-black: #000000;          /* Hitam Pekat (Pitch Black) */
-    --surface-dark: #121212;      /* Hitam Abu (Untuk Card & Navbar) */
-    --border-dark: #333333;       /* Border Halus */
-    
-    /* Warna Teks */
-    --text-main: #F0F8FF;         /* AliceBlue (Putih Bersih) */
-    --text-muted: #B0BEC5;        /* Abu Terang */
+    /* --- PALET BARU (Modern Dark Professional) --- */
+    --primary-red: #E53935;        /* Merah lebih soft & elegan */
+    --primary-red-hover: #C62828;  /* Hover lebih dalam */
+
+    --bg-main: #0F172A;            /* Dark navy (lebih enak dari hitam pekat) */
+    --surface-dark: #1E293B;       /* Card & navbar */
+    --surface-light: #334155;      /* Hover / layer */
+
+    --border-dark: #2D3748;        /* Border subtle */
+
+    /* Accent tambahan biar ga monoton */
+    --accent-blue: #38BDF8;        /* Buat highlight kecil */
+
+    /* Text */
+    --text-main: #F8FAFC;          /* Putih soft */
+    --text-muted: #94A3B8;         /* Abu modern */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-black); 
+    background-color: var(--bg-main); 
     color: var(--text-main);           
 }
 
 /* --- 1. NAVBAR (Dark Mode - UPDATED) --- */
 .navbar {
-    background-color: var(--bg-black) !important; 
+    background-color: rgba(15, 23, 42, 0.8) !important;
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-dark);
     box-shadow: none !important;
     padding: 12px 0;
@@ -192,9 +199,9 @@ body {
 }
 
 .custom-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-    border-color: #555;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--surface-light);
 }
 
 .card-img-top {
@@ -364,6 +371,7 @@ footer {
 .btn-outline-custom:hover {
     background-color: var(--primary-red);
     color: white;
+    box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
 }
 
 /* --- SCROLL & BUTTONS --- */
