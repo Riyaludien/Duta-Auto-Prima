@@ -4,25 +4,41 @@
 
 @section('content')
 
-{{-- 1. CSS KHUSUS TEMA DARK MODE (HIGH CONTRAST) --}}
+{{-- 1. CSS KHUSUS TEMA light MODE (HIGH CONTRAST) --}}
 <style>
     :root {
-        /* --- PALET WARNA BARU --- */
-        --primary-red: #FF0000;
-        /* Merah Terang */
-        --primary-green: #2ECC71;
-        /* Hijau Emerald */
-        --bg-black: #000000;
-        /* Hitam Pekat */
-        --surface-dark: #121212;
-        /* Hitam Abu (Card) */
-        --border-dark: #2A2A2A;
-        /* Warna Border Halus */
+        /* --- PRIMARY COLOR (BIRU UTAMA) --- */
+        --primary-blue: #2563EB;
+        /* Biru modern (tailwind-ish) */
+        --primary-blue-hover: #1E40AF;
+        /* Hover lebih dalam */
 
-        --text-main: #F0F8FF;
-        /* Putih Bersih */
-        --text-muted: #B0BEC5;
-        /* Abu Terang */
+        /* --- BACKGROUND --- */
+        --bg-main: #F8FAFC;
+        /* Putih soft */
+        --surface-white: #FFFFFF;
+        /* Card putih */
+        --surface-light: #EFF6FF;
+        /* Biru sangat muda */
+
+        /* --- BORDER --- */
+        --border-light: #E2E8F0;
+
+        /* --- ACCENT --- */
+        --accent-blue: #38BDF8;
+        /* Highlight */
+        --accent-soft: #DBEAFE;
+        /* Background hover */
+
+        /* --- TEXT --- */
+        --text-main: #0F172A;
+        /* Hitam navy */
+        --text-muted: #64748B;
+        /* Abu modern */
+
+        /* OPTIONAL (buat status dll) */
+        --success: #22C55E;
+        --danger: #EF4444;
     }
 
     /* Override Body khusus halaman ini */
@@ -31,11 +47,11 @@
         color: var(--text-main) !important;
     }
 
-    /* Styling Sidebar Filter (Dark) */
+    /* Styling Sidebar Filter (light) */
     .filter-card {
-        background: var(--surface-dark);
+        background: var(--surface-light);
         border-radius: 12px;
-        border: 1px solid var(--border-dark);
+        border: 1px solid var(--border-light);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         /* Shadow lebih gelap */
     }
@@ -44,23 +60,23 @@
         font-size: 0.9rem;
         font-weight: 700;
         text-transform: uppercase;
-        color: var(--primary-red);
+        color: var(--primary-blue);
         /* Judul Filter Merah */
         letter-spacing: 0.5px;
         margin-bottom: 15px;
     }
 
-    /* Styling Input & Checkbox di Dark Mode */
+    /* Styling Input & Checkbox di light Mode */
     .form-control,
     .form-select {
-        background-color: #1E1E1E;
-        border: 1px solid var(--border-dark);
+        background-color: #e6e6e6;
+        border: 1px solid var(--border-light);
         color: var(--text-main);
     }
 
     .form-control:focus,
     .form-select:focus {
-        background-color: #1E1E1E;
+        background-color: #ffffff;
         border-color: var(--primary-red);
         color: var(--text-main);
         box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
@@ -76,10 +92,10 @@
         border-color: var(--primary-red);
     }
 
-    /* Styling Card Produk (Dark) */
+    /* Styling Card Produk (light) */
     .product-card {
-        background: var(--surface-dark);
-        border: 1px solid var(--border-dark);
+        background: var(--surface-light);
+        border: 1px solid var(--border-light);
         border-radius: 12px;
         transition: all 0.3s ease;
         position: relative;
@@ -122,7 +138,7 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        background: var(--primary-red);
+        background: var(--primary-blue);
         color: #fff;
         font-weight: bold;
         font-size: 0.7rem;
@@ -148,10 +164,10 @@
     }
 
     .btn-add-cart:hover {
-        background: var(--primary-green);
+        background: var(--primary-blue);
         color: #000;
         /* Teks hitam saat hover hijau */
-        box-shadow: 0 0 10px var(--primary-green);
+        box-shadow: 0 0 10px var(--primary-blue-hover);
         /* Glow Hijau */
     }
 
@@ -173,10 +189,10 @@
         color: var(--primary-red);
     }
 
-    /* Pagination Dark */
+    /* Pagination light */
     .pagination .page-link {
-        background-color: var(--surface-dark);
-        border-color: var(--border-dark);
+        background-color: var(--surface-light);
+        border-color: var(--border-light);
         color: var(--text-main);
     }
 
@@ -196,7 +212,7 @@
     /* 1. Ubah Background Navbar jadi Hitam */
     .navbar {
         background-color: var(--bg-black) !important;
-        border-bottom: 1px solid var(--border-dark);
+        border-bottom: 1px solid var(--border-light);
         box-shadow: none !important;
     }
 
@@ -211,14 +227,14 @@
 
     /* 3. Ubah Tulisan Logo "Momo" jadi Putih (Biar kebaca) */
     .navbar-brand {
-        color: white !important;
+        color: black !important;
     }
 
     /* 4. Ubah Kotak Pencarian (Search Bar) di Navbar jadi Gelap */
     .navbar .input-group-text,
     .navbar input.form-control {
-        background-color: var(--surface-dark) !important;
-        border-color: var(--border-dark) !important;
+        background-color: var(--surface-light) !important;
+        border-color: var(--border-light) !important;
         color: var(--text-main) !important;
     }
 
@@ -229,8 +245,8 @@
 
     /* 5. Dropdown Menu User (Logout dll) jadi Gelap */
     .dropdown-menu {
-        background-color: var(--surface-dark) !important;
-        border: 1px solid var(--border-dark) !important;
+        background-color: var(--surface-light) !important;
+        border: 1px solid var(--border-light) !important;
     }
 
     .dropdown-item {
@@ -282,7 +298,7 @@
                         @endforeach
                     </div>
 
-                    <hr style="border-color: var(--border-dark);">
+                    <hr style="border-color: var(--border-light);">
 
                     <div class="mb-4">
                         <div class="filter-header">Rentang Harga</div>
@@ -299,7 +315,7 @@
                         </button>
 
                         {{-- Tombol Reset sebagai outline di bawah tombol terapkan --}}
-                        <a href="/katalog " class="btn btn-sm rounded-pill fw-bold btn-outline-secondary" style="font-size: 0.75rem; border-color: var(--border-dark); color: var(--text-muted);">
+                        <a href="/katalog " class="btn btn-sm rounded-pill fw-bold btn-outline-secondary" style="font-size: 0.75rem; border-color: var(--border-light); color: var(--text-muted);">
                             BATALKAN FILTER
                         </a>
                     </div>
@@ -358,6 +374,7 @@
 
                                 <form action="{{ route('cart.add', $barang->id) }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="jumlah" value="1">
                                     <button type="submit" class="btn-add-cart" title="Tambah ke Keranjang">
                                         <i class="bi bi-plus-lg"></i>
                                     </button>

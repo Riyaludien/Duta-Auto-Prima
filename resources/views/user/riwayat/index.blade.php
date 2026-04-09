@@ -7,19 +7,48 @@
 {{-- CSS KHUSUS HALAMAN INI --}}
 <style>
     :root {
-        --primary-red: #ff0000;
-        --surface-dark: #1c1c1c;
-        --border-dark: #333;
-        --text-muted: #888;
-        --bg-jasa: #0dcaf0;
-        --bg-barang: #dc3545;
-    }
+    /* --- PRIMARY COLOR (BIRU UTAMA) --- */
+    --primary-blue: #2563EB;
+    /* Biru modern (tailwind-ish) */
+    --primary-blue-hover: #1E40AF;
+    /* Hover lebih dalam */
+
+    /* --- BACKGROUND --- */
+    --bg-main: #F8FAFC;
+    /* Putih soft */
+    --surface-white: #e6e6e6;
+    /* Card putih */
+    --surface-light: #EFF6FF;
+    /* Biru sangat muda */
+
+    /* --- BORDER --- */
+    --border-light: #E2E8F0;
+
+    /* --- ACCENT --- */
+    --accent-blue: #38BDF8;
+    /* Highlight */
+    --accent-soft: #DBEAFE;
+    /* Background hover */
+
+    /* --- TEXT --- */
+    --text-main: #0F172A;
+    /* Hitam navy */
+    --text-muted: #64748B;
+    /* Abu modern */
+
+    /* OPTIONAL (buat status dll) */
+    --success: #22C55E;
+    --danger: #EF4444;
+}
 
     .page-header {
-        background: linear-gradient(to right, #000000, #1a0505);
-        padding: 40px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url('{{ asset('images/banner-1.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        padding: 60px 0;
         border-bottom: 2px solid var(--primary-red);
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 
     /* Filter Group Styling */
@@ -48,7 +77,7 @@
         font-size: 0.85rem;
         transition: 0.3s;
         border: 1px solid #444;
-        color: white;
+        color: black;
         background: transparent;
         white-space: nowrap;
         text-decoration: none;
@@ -57,12 +86,12 @@
     .btn-filter.active {
         background-color: var(--primary-red);
         border-color: var(--primary-red);
-        color: white;
+        color: var(--primary-blue);
     }
 
     .btn-filter:hover:not(.active) {
         border-color: #777;
-        color: white;
+        color: var(--primary-blue-hover);
     }
 
     /* Kartu Transaksi */
@@ -93,6 +122,9 @@
     }
 
     /* Status Indicators */
+    .border{
+        border-color: black;
+    }
     .border-status-selesai {
         border-left: 5px solid #2ECC71;
     }
@@ -112,7 +144,7 @@
     .text-price {
         font-size: 1.15rem;
         font-weight: 800;
-        color: #ffffff;
+        color: #ff0000;
     }
 
     .empty-state {
@@ -123,7 +155,7 @@
 </style>
 
 {{-- HEADER --}}
-<section class="page-header">
+<section class="page-header text-center">
     <div class="container">
         <h2 class="fw-bold text-white mb-0">Riwayat Transaksi</h2>
         <p class="text-muted small mb-0">Pantau status servis dan riwayat belanja Anda di Bengkel Momo.</p>
@@ -231,13 +263,13 @@
                         {{-- TOMBOL INVOICE --}}
                         @if($isJasa)
                         {{-- Gunakan nama route yang benar, biasanya 'riwayat.invoice' --}}
-                        <a href="{{ route('riwayat.invoice', $item->id) }}" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3">
+                        <a href="{{ route('riwayat.invoice', $item->id) }}" target="_blank" class="btn btn-sm btn-outline-dark rounded-pill px-3">
                             <i class="bi bi-printer me-1"></i> Invoice Jasa
                         </a>
                         @else
                         {{-- Untuk Barang, pastikan kamu sudah punya route invoice khusus barang --}}
                         {{-- Jika belum ada, sementara bisa arahkan ke detail atau hubungi admin --}}
-                        <a href="{{ route('riwayat.invoice.barang', $item->id) }}" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3">
+                        <a href="{{ route('riwayat.invoice.barang', $item->id) }}" target="_blank" class="btn btn-sm btn-outline-dark rounded-pill px-3">
                             <i class="bi bi-printer me-1"></i> Invoice Barang
                         </a>
                         @endif

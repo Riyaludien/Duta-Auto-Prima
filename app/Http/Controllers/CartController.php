@@ -81,11 +81,15 @@ class CartController extends Controller
         $request->validate([
             'metode_pembayaran' => 'required',
             'no_wa' => 'required|numeric|min:10',
+            'selected_items' => 'required|array|min:1'
         ]);
 
         $userId = Auth::id();
         $user = Auth::user();
-        $cartItems = Cart::with('barang')->where('user_id', $userId)->get();
+        $cartItems = Cart::with('barang')
+            ->where('user_id', $userId)
+            ->whereIn('id', $request->selected_items)
+            ->get();
 
         if ($cartItems->isEmpty()) {
             return back()->with('error', 'Keranjang kosong!');
@@ -116,7 +120,9 @@ class CartController extends Controller
                     $item->barang->decrement('stok', $item->jumlah);
                 }
 
-                Cart::where('user_id', $userId)->delete();
+                Cart::where('user_id', $userId)
+                    ->whereIn('id', $request->selected_items)
+                    ->delete();
 
                 // Email (Trigger mailable yang sudah kita buat)
                 Mail::to($user->email)->send(new PesananBaruBarang($transaksi));

@@ -114,7 +114,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <a href="{{ route('beranda') }}" class="footer-logo"><span class="text-danger">Bengkel</span>Momo</a>
-                    <p class="small text-secondary">
+                    <p class="small text-light">
                         Bengkel Momo adalah platform booking servis kendaraan terpercaya di Indonesia. Kami menghubungkan pemilik kendaraan dengan ribuan bengkel berkualitas.
                     </p>
                     <div class="social-icons mt-3">
